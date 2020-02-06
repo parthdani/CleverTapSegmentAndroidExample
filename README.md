@@ -223,7 +223,7 @@ Add the following code in your Android Manifest file
 </service>
 
 <meta-data
-android:name="CLEVERT AP_NOTIFICA TION_ICON" 
+android:name="CLEVERTAP_NOTIFICATION_ICON" 
 android:value="ic_stat_red_star"/>
 
 <service android:name="com.clevertap.android.sdk.CTNotificationIntentService" >
@@ -238,7 +238,7 @@ android:value="ic_stat_red_star"/>
 **Step A**: Add the following code in your Android Manifest file
 ```JAVA
 <meta-data
-  android:name="CLEVERT AP_NOTIFICA TION_ICON" 
+  android:name="CLEVERTAP_NOTIFICATION_ICON" 
   android:value="ic_stat_red_star"/>
 <!—Above meta data is optional -->
 
