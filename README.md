@@ -1,4 +1,4 @@
-##CleverTap - Segment Integration in Android
+#CleverTap - Segment Integration in Android
 
 **Getting Started i.e. Adding Destination in Segment**</br>
 
