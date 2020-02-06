@@ -1,4 +1,6 @@
-Getting Started i.e. Adding Destination in Segment
+##CleverTap - Segment Integration in Android
+
+**Getting Started i.e. Adding Destination in Segment**</br>
 
 Once the Segment library is integrated, toggle CleverTap on in your Segment destinations, and add your CleverTap Account ID and CleverTap Account Token which you can find in the CleverTap Dashboard under Settings.
 
@@ -6,13 +8,13 @@ You can integrate CleverTap via a server-side or mobile destination (iOS or Andr
 
 For Adding Account Id and Account Token ->Step 1:Go to Destination in Segment -> Select CleverTap -> Configure CleverTap.
 
-Step 2:
+**Step 2:**</br>
 
 Add CleverTap Account Id, Account Token and Enable the Switch from the top. For CleverTap Account Id and Account Token, Go to CleverTap Dashboard > Your Application > Settings.
 
-Integration in Android Application
+**Integration in Android Application**</br>
 
-Step 1: In your application Gradle file, add the following dependency
+**Step 1:** In your application Gradle file, add the following dependency
 
 ```JAVA
 dependencies {
@@ -33,7 +35,8 @@ implementation 'com.github.bumptech.glide:glide:4.9.0'//Mandatory if using App I
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Step 2: To Initialize the client. Add the following code in your Application class file.
+**Step 2: To Initialize the client.**</br> 
+Add the following code in your Application class file.
 
 ```JAVA
 public class CleverTapSegmentApplication extends Application {
@@ -74,7 +77,7 @@ public void onCreate()
 }
 ```
 
-Step 3: Add the following permissions in your Android Manifest file
+**Step 3**: Add the following permissions in your Android Manifest file
 
 ```JAVA
 <uses-permission android:name="android.permission.INTERNET" />
@@ -82,18 +85,18 @@ Step 3: Add the following permissions in your Android Manifest file
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 ```
 
-Step 4: Under <application></application> tag add the following Meta Data to make CleverTap SDK to be Non-GDPR compliant.
+**Step 4**: Under <application></application> tag add the following Meta Data to make CleverTap SDK to be Non-GDPR compliant.
 
 ```JAVA
 <meta-data
 android:name="CLEVERT AP_USE_GOOGLE_AD_ID" android:value="1"/>
 ```
 
-Step 5: Capturing the user information 
+**Step 5**: Capturing the user information 
 
-For Segment-CleverTap SDK version v1.1.2 and above
+**For Segment-CleverTap SDK version v1.1.2 and above**</br>
 
-Case 1: While user login or sign-up or you wanted to push data to CleverTap (This is done to allow multiple user logins or signup on the same device)
+**Case 1**: While user login or sign-up or you wanted to push data to CleverTap (This is done to allow multiple user logins or signup on the same device)
 
 Call Identify method of the segment which in turn will call onUserLogin of CleverTap. Example as follows
 
@@ -106,11 +109,11 @@ Analytics.with(getApplicationContext()).identify(61026032, traits, null);
 //Replace all the example values with your required dynamic ones.
 ```
 
-Note: If you pass Email address while user Login/Sign-up, Make sure you pass this Email address whenever you wanted to update any user property to cleverTap.
+**Note**: If you pass Email address while user Login/Sign-up, Make sure you pass this Email address whenever you wanted to update any user property to cleverTap.
 
-For Segment-CleverTap SDK version v1.1.1 and below
+**For Segment-CleverTap SDK version v1.1.1 and below**</br>
 
-Case 1: While user login or signup (This is done to allow multiple user logins or signup on the same device)
+**Case 1**: While user login or signup (This is done to allow multiple user logins or signup on the same device)
 
 First, call OnUserLogin and then Identify(segment method). Example as follows
 
@@ -128,7 +131,7 @@ Analytics.with(getApplicationContext()).identify(61026032, traits, null);
 //Replace all the example values with your required dynamic ones.
 ```
 
-Case 2: Updating User Properties once the user is login or signup
+**Case 2**: Updating User Properties once the user is login or signup
 
 Call directly Segment method to push user data. Example as follows
 ```JAVA
@@ -140,7 +143,7 @@ traits.putEmployees(123456778);
 Analytics.with(getApplicationContext()).identify(null, traits, null);
 ```
 
-CleverTap User Profile Consideration
+**CleverTap User Profile Consideration**</br>
 
 In a User Profile, you can set a maximum number of 256 custom attribute keys
 
@@ -152,7 +155,7 @@ Attribute key names are limited to 120 characters in length.
 
 Scalar attribute values are limited to 512 characters in length.
 
-Multi-value Property Constraints
+**Multi-value Property Constraints**</br>
 
 Multi-values property values must be unique for that key.
 
@@ -174,7 +177,7 @@ When removing item(s) from a multi-value property, if the key currently contains
 
 performing the remove operation, the key will be promoted to a multi-value property with the current value cast to a string. If the multi-value property is empty after the remove operation, the key will be removed.
 
-Step 5: Capturing Events
+**Step 5**: Capturing Events
 
 ```JAVA
 Analytics.with(getApplicationContext()).track("testEvent",
@@ -182,27 +185,27 @@ new Properties().putValue("value", "testValue") .putValue("testDate", new Date(S
 );
 ```
 
-Here testEvent is Event Name and Value and testDate is the Event Properties
+Here **testEvent** is Event Name and Value and **testDate** is the Event Properties
 
-CleverTap Event Consideration
+**CleverTap Event Consideration**</br>
 
-The maximum number of User Event types per app is 512. While the number might seem to limit, if used alongside properties can help you record a lot more User Event data than it seems. The volume of events submitted per account across those event types is practically unlimited.
+The maximum number of User Event types per app is **512**. While the number might seem to limit, if used alongside properties can help you record a lot more User Event data than it seems. The volume of events submitted per account across those event types is practically unlimited.
 
-For each User Event recorded, the maximum number of Event Properties is limited to 256.
+For each User Event recorded, the maximum number of **Event Properties** is limited to **256**.
 
-‘Charged’ Event supports up to 256 Items values
+‘Charged’ Event supports up to **256 Items values**
 
 Event property keys must be of type String and property values must be scalar values, i.e. String, Boolean, Integer, Float or a Date object.
 
-Prohibited characters: &, $, “, \, %, >, <, !
+**Prohibited characters**: &, $, “, \, %, >, <, !
 
-User Event keys are limited to 120 characters in length.
+User Event keys are limited to **120 characters in length**.
 
-User Event property values are limited to 512 characters in length.
+User Event property values are limited to **512 characters in length**.
 
-Step 5:5.A. Enabling Push Notifications
+**Step 5:5.A.** Enabling Push Notifications
 
-Case 1: Only CleverTap is present i.e. When you are going to send Push only from CleverTap
+**Case 1**: Only CleverTap is present i.e. When you are going to send Push only from CleverTap
 
 Add the following code in your Android Manifest file
 
@@ -230,9 +233,9 @@ android:value="ic_stat_red_star"/>
 </service>
 ```
 
-Case 2: When you are going to send Push from different tools like Firebase
+**Case 2**: When you are going to send Push from different tools like Firebase
 
-Step 1: Add the following code in your Android Manifest file
+**Step A**: Add the following code in your Android Manifest file
 ```JAVA
 <meta-data
   android:name="CLEVERT AP_NOTIFICA TION_ICON" 
@@ -246,14 +249,14 @@ Step 1: Add the following code in your Android Manifest file
 </service>
 ```
 
-Step 2: If your Firebase Messenger version is 18.0 and above then add the following code in your onNewToken method else under onTokenRefresh method
+**Step B**: If your Firebase Messenger version is 18.0 and above then add the following code in your onNewToken method else under onTokenRefresh method
 
 ```JAVA
 String fcmRegId = FirebaseInstanceId.getInstance().getToken(); 
 clevertapDefaultInstance.pushFcmRegistrationId(fcmRegId,true);
 ```
 
-Step 3: In your MyFcmMessageListenerService class file, place the following code
+**Step C**: In your MyFcmMessageListenerService class file, place the following code
 
 ```JAVA
 public class MyFcmMessageListenerService extends FirebaseMessagingService {
@@ -281,7 +284,7 @@ try {
 }
 ````
 
-5.A. Creating Notification Channel for Android O and above.
+**5.A.** Creating Notification Channel for Android O and above.
 
 ```JAVA
 CleverTapAPI cleverTapAPI = CleverTapAPI.getDefaultInstance(getApplicationContext()); 
@@ -291,13 +294,12 @@ cleverTapAPI.createNotificationChannel(getApplicationContext(),"got","Game of Th
 ```
 In the above example -> Notification sound file “gameofthrones.mp3” needs to be present in the android resource folder
 
-Step 6: Enabling In-App Notification and Push Amplification services.
+**Step 6**: Enabling In-App Notification and Push Amplification services.
 
 By default, all the required methods are present in the Segment-CleverTap SDK. So no extra declaration is required.
 
-Related articles
-
+**Related articles**</br>
 https://developer.clevertap.com/docs/android-quickstart-guide   
-https://segment.com/docs/destinations/clevertap/  
+https://segment.com/docs/destinations/clevertap/   
 
 
